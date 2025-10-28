@@ -208,8 +208,6 @@
       0%, 100% { transform: translateY(0px) scale(1); }
       50% { transform: translateY(-25px) scale(1.05); }
     }
-
-    /* Section Dividers (SVG) */
     .section-divider {
       width: 100%; height: 48px;
       display: block;
@@ -217,8 +215,6 @@
       background: none;
       border: none;
     }
-
-    /* Value, Service, Testimonial Cards */
     .value-card, .service-card, .testimonial-card {
       background: var(--primary-white);
       border-radius: var(--radius-lg);
@@ -259,23 +255,15 @@
       margin: 0 0.25rem 0.25rem 0;
       display: inline-block;
     }
-    /* About Section */
     .about-image {
-      background: var(--warm-beige);
-      border-radius: var(--radius-lg);
-      padding: 2rem 0 1rem 0;
-      text-align: center;
-      box-shadow: 0 2px 12px 0 rgba(224,120,86,0.09);
+      /* Removed image, keep spacing for layout balance */
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .about-image img {
-      width: 115px; height: 115px;
-      border-radius: 50%;
-      margin-bottom: 0.8rem;
-      box-shadow: 0 2px 10px #e0785620;
-      border: 4px solid #fff;
-      object-fit: cover;
-    }
-    /* CTA Section */
+    .about-image img { display: none; }
+    .about-image p { display: none; }
     .cta-section {
       background: var(--accent-coral);
       color: #fff;
@@ -286,14 +274,14 @@
     .cta-section p { color: #ffe3d2; }
     .contact-wrapper {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 2.5rem;
       margin-top: 2.5rem;
-      max-width: 860px;
+      max-width: 540px;
       margin-left: auto;
       margin-right: auto;
     }
-    .contact-form-container, .calendly-container {
+    .contact-form-container {
       background: var(--primary-white);
       padding: 2rem;
       border-radius: var(--radius-lg);
@@ -301,15 +289,59 @@
       box-shadow: 0 8px 25px rgba(0,0,0,0.08);
       min-width: 0;
     }
-    .calendly-placeholder {
-      background: var(--background-cream);
-      padding: 2.5rem 1.8rem;
-      border-radius: 8px;
-      border: 2px dashed var(--border-light);
-      text-align: center;
-      color: var(--text-secondary);
+    .form-group {
+      margin-bottom: 1.25rem;
     }
-    /* Footer */
+    .form-group label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+      color: var(--text-charcoal);
+      font-size: 1rem;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.85rem;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      font-size: 1.08rem;
+      transition: all 0.3s;
+      font-family: inherit;
+      color: var(--text-charcoal);
+      background: #faf9f7;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent-coral);
+      box-shadow: 0 0 0 2px var(--accent-coral);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+    .form-submit {
+      width: 100%;
+      margin-top: 0.9rem;
+      background: var(--accent-coral);
+      color: white;
+      font-weight: 900;
+      border: none;
+      border-radius: 24px;
+      padding: 1.12rem 2.3rem;
+      font-size: 1.09rem;
+      cursor: pointer;
+      transition: background .16s, box-shadow .17s, transform .12s;
+    }
+    .form-submit:hover,
+    .form-submit:focus {
+      background: var(--accent-coral-dark);
+      box-shadow: 0 2px 18px rgba(224,120,86,.13);
+      transform: translateY(-1px) scale(1.03);
+    }
     .footer {
       background: var(--accent-teal);
       color: var(--primary-white);
@@ -331,17 +363,13 @@
       color: #ffe3d2;
       font-size: 0.93rem;
     }
-    /* Animations */
     .fade-in { opacity: 0; transform: translateY(32px); transition: all 0.7s cubic-bezier(.4,0,.2,1); }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
-    /* Accessibility improvement: focus outline */
     a:focus, button:focus, input:focus, select:focus, textarea:focus {
       outline: 2.5px solid var(--accent-coral);
       outline-offset: 2px;
     }
-    /* Responsive Design */
     @media (max-width: 1024px) {
-      .contact-wrapper { grid-template-columns: 1fr; }
       .about-content { grid-template-columns: 1fr; gap: 2rem; }
     }
     @media (max-width: 768px) {
@@ -371,7 +399,7 @@
       .about-text h2 { text-align: center; }
       .expertise-grid { grid-template-columns: 1fr; }
       .contact-wrapper { grid-template-columns: 1fr; }
-      .contact-form-container, .calendly-container { padding: 1.2rem; }
+      .contact-form-container { padding: 1.2rem; }
     }
     @media (max-width: 480px) {
       .container { padding: 0 0.7rem; }
@@ -564,8 +592,7 @@
             </div>
           </div>
           <div class="about-image fade-in">
-            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Susan C. Bryant, Founder of SCB Data" loading="lazy">
-            <p>Susan C. Bryant<br><small style="color:var(--text-secondary);font-size:0.95rem;">Founder &amp; Principal</small></p>
+            <!-- Profile picture and text removed per instructions -->
           </div>
         </div>
       </div>
@@ -628,15 +655,15 @@
             <form id="consultation-form" autocomplete="on">
               <div class="form-group">
                 <label for="name">Full Name *</label>
-                <input type="text" id="name" name="name" required aria-required="true" autocomplete="name">
+                <input type="text" id="name" name="name" required aria-required="true" autocomplete="name" placeholder="Your full name">
               </div>
               <div class="form-group">
                 <label for="email">Email *</label>
-                <input type="email" id="email" name="email" required aria-required="true" autocomplete="email">
+                <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" placeholder="you@email.com">
               </div>
               <div class="form-group">
                 <label for="company">Company</label>
-                <input type="text" id="company" name="company" autocomplete="organization">
+                <input type="text" id="company" name="company" autocomplete="organization" placeholder="Company (optional)">
               </div>
               <div class="form-group">
                 <label for="challenge">Your Challenge *</label>
@@ -649,18 +676,13 @@
                   <option value="other">Something else</option>
                 </select>
               </div>
-              <button type="submit" class="btn-primary form-submit" aria-label="Submit inquiry form">Send Inquiry</button>
+              <div class="form-group">
+                <label for="message">How can we help?</label>
+                <textarea id="message" name="message" rows="4" placeholder="Share your key questions or context (optional)"></textarea>
+              </div>
+              <button type="submit" class="form-submit" aria-label="Submit inquiry form">Send Inquiry</button>
+              <div id="form-success" style="display:none;color:var(--accent-teal);margin-top:1rem;font-weight:700;text-align:center;">Thank you! We’ll contact you within 24 hours to schedule your call.</div>
             </form>
-          </div>
-          <div class="calendly-container fade-in">
-            <h3 style="color:var(--text-charcoal);margin-bottom:1.25rem;text-align:center;">Book Directly</h3>
-            <div class="calendly-placeholder">
-              <p><strong>Ready to talk now?</strong></p>
-              <p style="margin:0.9rem 0;">
-                <a href="https://calendly.com/your-link" target="_blank" rel="noopener" style="color:var(--accent-coral);text-decoration:underline;font-weight:600;">Book time on my calendar</a>
-              </p>
-              <p><small>Add your Calendly link for instant scheduling</small></p>
-            </div>
           </div>
         </div>
       </div>
@@ -733,14 +755,16 @@
     }, { threshold: 0.18 });
     fadeElements.forEach(element => fadeInOnScroll.observe(element));
 
-    // Form Handling with Validation
+    // Contact Form Handling with Validation
     const contactForm = document.getElementById('consultation-form');
+    const formSuccess = document.getElementById('form-success');
     if (contactForm) {
       contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
         const challenge = document.getElementById('challenge').value;
+        const message = document.getElementById('message').value.trim();
 
         if (!name || !email || !challenge) {
           alert('Please fill in all required fields.');
@@ -750,8 +774,11 @@
           alert('Please enter a valid email address.');
           return;
         }
-        alert('Thank you! We’ll contact you within 24 hours to schedule your call.');
+
+        // Success feedback
         contactForm.reset();
+        formSuccess.style.display = 'block';
+        setTimeout(() => { formSuccess.style.display = 'none'; }, 6000);
       });
     }
   </script>
