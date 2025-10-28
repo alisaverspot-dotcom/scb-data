@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCB Data | Data-Driven Clarity for Founders</title>
+  <meta name="description" content="SCB Data delivers strategic research, competitive analysis, and custom systems to empower founders with confident, data-driven decisions.">
+  <meta name="keywords" content="market research, competitive analysis, startup strategy, data-driven decisions, founder support">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-white: #fff;
+      --background-cream: #F8F7F4;
+      --background-gradient: linear-gradient(135deg, #FFF5EC 0%, #F8F7F4 100%);
+      --accent-coral: #E07856;
+      --accent-coral-dark: #cd6a44;
+      --accent-teal: #24736b;
+      --accent-teal-light: #40a89a;
+      --accent-teal-muted: rgba(36,115,107, .08);
+      --warm-beige: #F6E7D8;
+      --text-charcoal: #1A1A1A;
+      --text-secondary: #4A4A4A;
+      --border-light: #E8E8E8;
+      --shadow: 0 4px 32px 0 rgba(224,120,86,0.09);
+      --radius: 18px;
+      --radius-lg: 32px;
+      --section-pad: 5.5rem 0 4.5rem 0;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', 'Nunito', Arial, sans-serif;
+      background: var(--background-cream);
+      color: var(--text-charcoal);
+      margin: 0;
+      padding: 0;
+      font-size: 1.08rem;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Nunito', 'Inter', Arial, sans-serif;
+      font-weight: 900;
+      margin: 0 0 0.8em 0;
+      letter-spacing: -0.01em;
+    }
+    h1 { font-size: clamp(2.4rem,5vw,3.35rem); line-height: 1.08; }
+    h2 { font-size: 2.1rem; }
+    h3 { font-size: 1.4rem; }
+    h4 { font-size: 1.13rem; }
+    p, ul, li { font-size: 1.11rem; }
+    a { color: var(--accent-coral); text-decoration: none; transition: color .2s; }
+    a:hover, a:focus { color: var(--accent-teal-light); outline: none; }
+    .container {
+      max-width: 1170px;
+      margin: 0 auto;
+      padding: 0 1.4rem;
+      position: relative;
+      z-index: 2;
+    }
+    /* Header */
+    .header {
+      background: rgba(255,255,255,0.98);
+      box-shadow: 0 2px 24px #f6e7d8a6;
+      border-bottom: 1px solid var(--border-light);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: box-shadow .25s;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.3rem 0;
+    }
+    .logo {
+      font-size: 1.65rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, var(--accent-coral) 0%, var(--accent-teal) 70%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 0.03em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.1rem;
+      align-items: center;
+    }
+    .nav-links a {
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 1.01rem;
+      letter-spacing: 0.01em;
+      transition: color .15s;
+    }
+    .nav-links a.active, .nav-links a:hover { color: var(--accent-coral); }
+    .nav-cta {
+      background: var(--accent-coral);
+      color: var(--primary-white) !important;
+      padding: 0.7rem 1.35rem;
+      border-radius: 22px;
+      font-weight: 900;
+      border: none;
+      font-size: 1.04rem;
+      box-shadow: 0 3px 12px rgba(224,120,86,0.08);
+      transition: background .17s, transform .13s;
+      margin-left: 0.8rem;
+      outline: none;
+    }
+    .nav-cta:hover, .nav-cta:focus { background: var(--accent-coral-dark); transform: translateY(-2px) scale(1.04);}
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      background: none;
+      border: none;
+      cursor: pointer;
+      gap: 4px;
+      margin-left: 1.4rem;
+    }
+    .mobile-menu-toggle span {
+      width: 24px; height: 2.5px; background: var(--accent-coral); transition: 0.3s;
+    }
+    /* Hero Section */
+    .hero {
+      min-height: 92vh;
+      background: var(--background-gradient);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 1.5rem 0 2.5rem 0;
+    }
+    .hero-content {
+      max-width: 620px;
+      z-index: 2;
+      position: relative;
+    }
+    .hero .hero-actions {
+      display: flex;
+      gap: 1.3rem;
+      margin-top: 2.6rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .btn-primary {
+      background: var(--accent-coral);
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 1.12rem 2.3rem;
+      font-size: 1.09rem;
+      font-weight: 900;
+      box-shadow: 0 4px 18px rgba(224,120,86,0.12);
+      cursor: pointer;
+      transition: background .16s, box-shadow .17s, transform .12s;
+      outline: none;
+    }
+    .btn-primary:hover, .btn-primary:focus {
+      background: var(--accent-coral-dark);
+      box-shadow: 0 5px 25px rgba(224,120,86,0.19);
+      transform: translateY(-2px) scale(1.04);
+    }
+    .btn-secondary {
+      background: var(--warm-beige);
+      color: var(--accent-teal);
+      border: none;
+      border-radius: 24px;
+      padding: 1.12rem 2.3rem;
+      font-size: 1.09rem;
+      font-weight: 800;
+      transition: background .15s, color .13s;
+    }
+    .btn-secondary:hover, .btn-secondary:focus{
+      background: var(--accent-teal);
+      color: #fff;
+    }
+    .hero-visual-bg {
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 40vw;
+      z-index: 1;
+      pointer-events: none;
+      background: radial-gradient(circle at 80% 30%, #ffdccc66 0%, #fff5ec00 80%);
+      opacity: 0.7;
+    }
+    .hero-visual {
+      position: absolute;
+      top: 0; right: 0;
+      width: 46%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+    .data-node {
+      position: absolute;
+      background: var(--accent-coral);
+      border-radius: 50%;
+      opacity: 0.09;
+      animation: float 6s ease-in-out infinite;
+    }
+    .data-node:nth-child(1) { width: 110px; height: 110px; top: 12%; right: 18%; animation-delay: 0s; }
+    .data-node:nth-child(2) { width: 170px; height: 170px; top: 48%; right: 8%; animation-delay: 2s; }
+    .data-node:nth-child(3) { width: 85px; height: 85px; top: 62%; right: 38%; animation-delay: 4s; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-25px) scale(1.05); }
+    }
+
+    /* Section Dividers (SVG) */
+    .section-divider {
+      width: 100%; height: 48px;
+      display: block;
+      margin: 0; padding: 0;
+      background: none;
+      border: none;
+    }
+
+    /* Value, Service, Testimonial Cards */
+    .value-card, .service-card, .testimonial-card {
+      background: var(--primary-white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 2.1rem 1.5rem 2.25rem 1.5rem;
+      margin-bottom: 0;
+    }
+    .value-icon, .service-icon {
+      font-size: 2.35rem;
+      color: var(--accent-coral);
+      margin-bottom: 1.3rem;
+    }
+    .testimonial-card .testimonial-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 0.8rem;
+      border: 3px solid #fff;
+      box-shadow: 0 2px 8px #e0785619;
+      vertical-align: middle;
+    }
+    .testimonial-author {
+      font-weight: 700;
+      color: var(--accent-coral);
+      font-size: 1.01rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .metric-pill {
+      background: var(--accent-teal-muted);
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      color: var(--accent-teal);
+      font-weight: 700;
+      border: 1px solid var(--border-light);
+      margin: 0 0.25rem 0.25rem 0;
+      display: inline-block;
+    }
+    /* About Section */
+    .about-image {
+      background: var(--warm-beige);
+      border-radius: var(--radius-lg);
+      padding: 2rem 0 1rem 0;
+      text-align: center;
+      box-shadow: 0 2px 12px 0 rgba(224,120,86,0.09);
+    }
+    .about-image img {
+      width: 115px; height: 115px;
+      border-radius: 50%;
+      margin-bottom: 0.8rem;
+      box-shadow: 0 2px 10px #e0785620;
+      border: 4px solid #fff;
+      object-fit: cover;
+    }
+    /* CTA Section */
+    .cta-section {
+      background: var(--accent-coral);
+      color: #fff;
+      text-align: center;
+      padding: var(--section-pad);
+    }
+    .cta-section h2 { color: #fff; }
+    .cta-section p { color: #ffe3d2; }
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .contact-form-container, .calendly-container {
+      background: var(--primary-white);
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      text-align: left;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      min-width: 0;
+    }
+    .calendly-placeholder {
+      background: var(--background-cream);
+      padding: 2.5rem 1.8rem;
+      border-radius: 8px;
+      border: 2px dashed var(--border-light);
+      text-align: center;
+      color: var(--text-secondary);
+    }
+    /* Footer */
+    .footer {
+      background: var(--accent-teal);
+      color: var(--primary-white);
+      padding: 3.5rem 0 1.8rem;
+    }
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-column h3 { color: var(--warm-beige); }
+    .footer-column a { color: #ffe3d2; }
+    .footer-column a:hover { color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.13);
+      padding-top: 1.8rem;
+      text-align: center;
+      color: #ffe3d2;
+      font-size: 0.93rem;
+    }
+    /* Animations */
+    .fade-in { opacity: 0; transform: translateY(32px); transition: all 0.7s cubic-bezier(.4,0,.2,1); }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    /* Accessibility improvement: focus outline */
+    a:focus, button:focus, input:focus, select:focus, textarea:focus {
+      outline: 2.5px solid var(--accent-coral);
+      outline-offset: 2px;
+    }
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .contact-wrapper { grid-template-columns: 1fr; }
+      .about-content { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 1rem; }
+      .section { padding: 3.5rem 0; }
+      .hero { margin-top: 50px; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--background-cream);
+        flex-direction: column;
+        padding: 1.5rem;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+        border-top: 1px solid var(--border-light);
+      }
+      .nav-links.active { display: flex; }
+      .mobile-menu-toggle { display: flex; }
+      .hero-visual, .hero-visual-bg { display: none; }
+      .hero-actions { flex-direction: column; gap: 0.85rem; }
+      .btn-primary, .btn-secondary { width: 100%; padding: 1rem; }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.3rem; }
+      .value-grid, .service-grid, .testimonial-grid { grid-template-columns: 1fr; }
+      .about-text h2 { text-align: center; }
+      .expertise-grid { grid-template-columns: 1fr; }
+      .contact-wrapper { grid-template-columns: 1fr; }
+      .contact-form-container, .calendly-container { padding: 1.2rem; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 0.7rem; }
+      h1 { font-size: 1.3rem; }
+      h2 { font-size: 1.05rem; }
+      .hero-subtitle, .section-subtitle { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav class="nav container" aria-label="Main navigation">
+      <div class="logo">SCB Data</div>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="nav-cta" aria-label="Book a consultation call">Book a Call</a>
+      </div>
+      <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Data-Driven Clarity for Founders</h1>
+          <p class="hero-subtitle">Actionable research, competitive insights, and custom systems—so you can make confident, evidence-based decisions and grow faster.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn-primary" aria-label="Schedule a free strategy call">Book a Free Strategy Call</a>
+            <a href="#services" class="btn-secondary" aria-label="Explore our services">Explore Services</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual-bg"></div>
+      <div class="hero-visual">
+        <div class="data-node"></div>
+        <div class="data-node"></div>
+        <div class="data-node"></div>
+      </div>
+    </section>
+    <!-- SVG Divider -->
+    <svg class="section-divider" viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,0 C400,48 1040,0 1440,48 L1440,48 L0,48 Z" fill="#FFF5EC"/>
+    </svg>
+
+    <!-- Value Proposition -->
+    <section class="value-props section" id="value">
+      <div class="container">
+        <div class="value-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2.2rem;">
+          <div class="value-card fade-in">
+            <div class="value-icon"><i class="fas fa-search"></i></div>
+            <h3>Deep Research</h3>
+            <p>Comprehensive competitor and market analysis tailored to your unique challenges.</p>
+          </div>
+          <div class="value-card fade-in">
+            <div class="value-icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Actionable Insights</h3>
+            <p>Data-driven recommendations that eliminate guesswork and drive strategic clarity.</p>
+          </div>
+          <div class="value-card fade-in">
+            <div class="value-icon"><i class="fas fa-cogs"></i></div>
+            <h3>Streamlined Systems</h3>
+            <p>Custom dashboards and tools to optimize your operations and decision-making.</p>
+          </div>
+          <div class="value-card fade-in">
+            <div class="value-icon"><i class="fas fa-bullseye"></i></div>
+            <h3>Founder-Centric</h3>
+            <p>Personalized, high-impact solutions designed for startup efficiency and growth.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <svg class="section-divider" viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,48 C400,0 1040,48 1440,0 L1440,48 L0,48 Z" fill="#F8F7F4"/>
+    </svg>
+
+    <!-- Process Section -->
+    <section id="process" class="process section">
+      <div class="container">
+        <h2>How We Deliver Clarity</h2>
+        <p class="section-subtitle">A streamlined process to provide actionable insights and efficient systems.</p>
+        <div class="process-steps" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2.5rem;max-width:960px;margin:0 auto;">
+          <div class="process-step fade-in">
+            <div class="step-number" style="width:70px;height:70px;border-radius:50%;background:var(--primary-white);color:var(--accent-coral);display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:700;margin:0 auto 1.25rem;border:2px solid var(--border-light);box-shadow:0 3px 10px rgba(0,0,0,0.05);">1</div>
+            <h3>Discovery</h3>
+            <p>We dive deep into your goals, challenges, and market to define the scope.</p>
+          </div>
+          <div class="process-step fade-in">
+            <div class="step-number" style="width:70px;height:70px;border-radius:50%;background:var(--primary-white);color:var(--accent-coral);display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:700;margin:0 auto 1.25rem;border:2px solid var(--border-light);box-shadow:0 3px 10px rgba(0,0,0,0.05);">2</div>
+            <h3>Research</h3>
+            <p>Rigorous data collection and analysis to uncover critical insights.</p>
+          </div>
+          <div class="process-step fade-in">
+            <div class="step-number" style="width:70px;height:70px;border-radius:50%;background:var(--primary-white);color:var(--accent-coral);display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:700;margin:0 auto 1.25rem;border:2px solid var(--border-light);box-shadow:0 3px 10px rgba(0,0,0,0.05);">3</div>
+            <h3>Strategy</h3>
+            <p>Actionable roadmaps and systems tailored to your business needs.</p>
+          </div>
+          <div class="process-step fade-in">
+            <div class="step-number" style="width:70px;height:70px;border-radius:50%;background:var(--primary-white);color:var(--accent-coral);display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:700;margin:0 auto 1.25rem;border:2px solid var(--border-light);box-shadow:0 3px 10px rgba(0,0,0,0.05);">4</div>
+            <h3>Support</h3>
+            <p>Ongoing guidance to ensure confident execution and results.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <svg class="section-divider" viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,0 C400,48 1040,0 1440,48 L1440,48 L0,48 Z" fill="#FFF5EC"/>
+    </svg>
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+      <div class="container">
+        <h2>Our Services</h2>
+        <p class="section-subtitle">Tailored research and systems to empower founders and growing brands.</p>
+        <div class="service-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2.5rem;">
+          <div class="service-card fade-in">
+            <div class="service-icon"><i class="fas fa-chess-board"></i></div>
+            <h3>Competitive Intelligence</h3>
+            <p>Deep analysis of your competitors to uncover opportunities and mitigate risks.</p>
+            <h4>What You Get:</h4>
+            <ul class="service-features">
+              <li>Competitor positioning and SWOT</li>
+              <li>Market gap analysis</li>
+              <li>Strategic opportunity roadmap</li>
+              <li>Pricing and differentiation insights</li>
+            </ul>
+            <div class="investment"><strong>Investment:</strong> Starting at $2,500</div>
+          </div>
+          <div class="service-card fade-in">
+            <div class="service-icon"><i class="fas fa-rocket"></i></div>
+            <h3>Market Entry Strategy</h3>
+            <p>Data-driven strategies for launching products or entering new markets.</p>
+            <h4>What You Get:</h4>
+            <ul class="service-features">
+              <li>Target audience profiling</li>
+              <li>Market sizing and potential</li>
+              <li>Go-to-market playbook</li>
+              <li>Risk assessment and mitigation</li>
+            </ul>
+            <div class="investment"><strong>Investment:</strong> Starting at $4,500</div>
+          </div>
+          <div class="service-card fade-in">
+            <div class="service-icon"><i class="fas fa-tools"></i></div>
+            <h3>Founder Systems Design</h3>
+            <p>Custom tools and processes to streamline decisions and operations.</p>
+            <h4>What You Get:</h4>
+            <ul class="service-features">
+              <li>Decision-making frameworks</li>
+              <li>Performance dashboards</li>
+              <li>Research workflow optimization</li>
+              <li>Collaboration systems</li>
+            </ul>
+            <div class="investment"><strong>Investment:</strong> Starting at $3,500</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <svg class="section-divider" viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,48 C400,0 1040,48 1440,0 L1440,48 L0,48 Z" fill="#F8F7F4"/>
+    </svg>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+      <div class="container">
+        <div class="about-content" style="display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;">
+          <div class="about-text">
+            <h2>Your Strategic Data Partner</h2>
+            <p>With over 15 years in research, strategy, and systems design, SCB Data was founded to empower startups with enterprise-grade insights and streamlined processes.</p>
+            <p>We cut through complexity, deliver data-driven clarity, and build scalable systems that grow with your business.</p>
+            <div class="expertise-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;margin-top:2.5rem;">
+              <div class="expertise-item fade-in">
+                <div class="value-icon"><i class="fas fa-database"></i></div>
+                <h4>Data Analysis</h4>
+              </div>
+              <div class="expertise-item fade-in">
+                <div class="value-icon"><i class="fas fa-chess"></i></div>
+                <h4>Strategic Planning</h4>
+              </div>
+              <div class="expertise-item fade-in">
+                <div class="value-icon"><i class="fas fa-project-diagram"></i></div>
+                <h4>Systems Design</h4>
+              </div>
+            </div>
+          </div>
+          <div class="about-image fade-in">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Susan C. Bryant, Founder of SCB Data" loading="lazy">
+            <p>Susan C. Bryant<br><small style="color:var(--text-secondary);font-size:0.95rem;">Founder &amp; Principal</small></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <svg class="section-divider" viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,0 C400,48 1040,0 1440,48 L1440,48 L0,48 Z" fill="#FFF5EC"/>
+    </svg>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials section">
+      <div class="container">
+        <h2>Founder Success Stories</h2>
+        <p class="section-subtitle">See how SCB Data has helped founders gain clarity and achieve results.</p>
+        <div class="testimonial-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.75rem;">
+          <div class="testimonial-card fade-in">
+            <p class="testimonial-text" style="font-style:italic;margin-bottom:1.25rem;color:var(--text-secondary);line-height:1.8;font-size:1rem;">"SCB Data’s competitive analysis saved us from a costly pivot. We discovered three untapped market opportunities."</p>
+            <div class="testimonial-metrics">
+              <span class="metric-pill">$50K+ Saved</span>
+              <span class="metric-pill">3 New Opportunities</span>
+            </div>
+            <div class="testimonial-author">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="E-commerce Founder" class="testimonial-avatar" loading="lazy">
+              — E-commerce Founder, $3M ARR
+            </div>
+          </div>
+          <div class="testimonial-card fade-in">
+            <p class="testimonial-text" style="font-style:italic;margin-bottom:1.25rem;color:var(--text-secondary);line-height:1.8;font-size:1rem;">"Their frameworks reduced our planning time by 60%, enabling faster, data-backed decisions."</p>
+            <div class="testimonial-metrics">
+              <span class="metric-pill">60% Faster Decisions</span>
+              <span class="metric-pill">3 Weeks Saved Monthly</span>
+            </div>
+            <div class="testimonial-author">
+              <img src="https://randomuser.me/api/portraits/men/97.jpg" alt="SaaS Founder" class="testimonial-avatar" loading="lazy">
+              — SaaS Founder, 15-person Team
+            </div>
+          </div>
+          <div class="testimonial-card fade-in">
+            <p class="testimonial-text" style="font-style:italic;margin-bottom:1.25rem;color:var(--text-secondary);line-height:1.8;font-size:1rem;">"SCB Data’s market entry strategy gave us the confidence to expand into Europe, with ROI in just one quarter."</p>
+            <div class="testimonial-metrics">
+              <span class="metric-pill">127% ROI in 6 Months</span>
+              <span class="metric-pill">Successful EU Launch</span>
+            </div>
+            <div class="testimonial-author">
+              <img src="https://randomuser.me/api/portraits/women/77.jpg" alt="Consumer Goods Founder" class="testimonial-avatar" loading="lazy">
+              — Consumer Goods Founder
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="cta-section section">
+      <div class="container">
+        <h2>Unlock Data-Driven Confidence</h2>
+        <p>Schedule a free 20-minute strategy call to discuss your goals and challenges.</p>
+        <div class="contact-wrapper">
+          <div class="contact-form-container fade-in">
+            <h3 style="color:var(--text-charcoal);margin-bottom:1.25rem;text-align:center;">Send an Inquiry</h3>
+            <form id="consultation-form" autocomplete="on">
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" required aria-required="true" autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required aria-required="true" autocomplete="email">
+              </div>
+              <div class="form-group">
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company" autocomplete="organization">
+              </div>
+              <div class="form-group">
+                <label for="challenge">Your Challenge *</label>
+                <select id="challenge" name="challenge" required aria-required="true">
+                  <option value="">Select your primary challenge</option>
+                  <option value="competitive">Understanding competitors</option>
+                  <option value="market-entry">Entering new markets</option>
+                  <option value="decision-making">Improving decisions</option>
+                  <option value="positioning">Finding positioning</option>
+                  <option value="other">Something else</option>
+                </select>
+              </div>
+              <button type="submit" class="btn-primary form-submit" aria-label="Submit inquiry form">Send Inquiry</button>
+            </form>
+          </div>
+          <div class="calendly-container fade-in">
+            <h3 style="color:var(--text-charcoal);margin-bottom:1.25rem;text-align:center;">Book Directly</h3>
+            <div class="calendly-placeholder">
+              <p><strong>Ready to talk now?</strong></p>
+              <p style="margin:0.9rem 0;">
+                <a href="https://calendly.com/your-link" target="_blank" rel="noopener" style="color:var(--accent-coral);text-decoration:underline;font-weight:600;">Book time on my calendar</a>
+              </p>
+              <p><small>Add your Calendly link for instant scheduling</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>SCB Data</h3>
+          <p>Empowering founders with data-driven clarity and streamlined systems.</p>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <a href="#services">Services</a>
+          <a href="#process">How It Works</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-column">
+          <h3>Connect</h3>
+          <a href="mailto:hello@scbdata.com">hello@scbdata.com</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Twitter</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 SCB Data. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    // Mobile Navigation Toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    mobileMenuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileMenuToggle.setAttribute('aria-expanded', navLinks.classList.contains('active'));
+    });
+
+    // Close menu when link clicked
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        // Only scroll if href is a valid ID on page
+        const targetID = this.getAttribute('href');
+        if (targetID.length > 1 && document.querySelector(targetID)) {
+          e.preventDefault();
+          document.querySelector(targetID).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Fade-in Animations on Scroll
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeInOnScroll = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeInOnScroll.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
+    fadeElements.forEach(element => fadeInOnScroll.observe(element));
+
+    // Form Handling with Validation
+    const contactForm = document.getElementById('consultation-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const challenge = document.getElementById('challenge').value;
+
+        if (!name || !email || !challenge) {
+          alert('Please fill in all required fields.');
+          return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          alert('Please enter a valid email address.');
+          return;
+        }
+        alert('Thank you! We’ll contact you within 24 hours to schedule your call.');
+        contactForm.reset();
+      });
+    }
+  </script>
+</body>
+</html>
